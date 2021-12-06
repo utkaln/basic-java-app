@@ -7,7 +7,16 @@ pipeline {
         stage("build jar") {
             steps {
                 script {
-                    echo "build stage of basic java app starting ..."
+                    echo "Build stage of basic java app starting ..."
+                    sh 'mvn install'
+                }
+            }
+        }
+
+        stage("package jar") {
+            steps {
+                script {
+                    echo "Package stage of basic java app starting ..."
                     sh 'mvn package'
                 }
             }
