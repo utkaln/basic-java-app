@@ -1,1 +1,8 @@
 
+### VS Code ###
+.vscode/
+.classpath
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
