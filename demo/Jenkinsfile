@@ -4,15 +4,6 @@ pipeline {
         maven 'Maven'
     }
     stages {
-        stage("build jar") {
-            steps {
-                script {
-                    echo "Build stage of basic java app starting ..."
-                    sh 'mvn install'
-                }
-            }
-        }
-
         stage("package jar") {
             steps {
                 script {
