@@ -25,7 +25,7 @@ pipeline {
                         sh 'docker build -t utkal/demo-java-maven-app:java-maven-2.0 .'
 
                         // authenticate to docker hub
-                        sh "echo ${PSWD} | docker login -u ${USER} --password-stdin"
+                        sh "echo $PSWD | docker login -u $UID --password-stdin"
 
                         // push image to docker hub
                         sh 'docker push utkal/demo-java-maven-app:java-maven-2.0'
