@@ -8,7 +8,7 @@ pipeline {
             steps {
                 script {
                     echo "Package stage of basic java app starting ..."
-                    sh 'mvn -X package'
+                    sh 'mvn package'
                 }
             }
         }
