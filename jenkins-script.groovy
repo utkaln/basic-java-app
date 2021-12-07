@@ -24,3 +24,5 @@ def build_image() {
         echo "Deploy step of basic java app completed ||||||"
     }
 }
+
+return this
