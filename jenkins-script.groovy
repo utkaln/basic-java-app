@@ -18,11 +18,11 @@ def build_image() {
         // push image to docker hub
         sh 'docker push utkal/demo-java-maven-app:java-maven-2.0'
     }
+}
 
     def deploy() {
         echo "Dummy Method"
         echo "Deploy step of basic java app completed ||||||"
     }
-}
 
 return this
