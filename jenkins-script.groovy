@@ -1,3 +1,4 @@
+#!/usr/bin/env groovy
 def package_jar() {
     echo "Package stage of basic java app starting ..."
     sh 'mvn package'
