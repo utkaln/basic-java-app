@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+@Library('shared-lib')_
 def grv
 pipeline {
     agent any
@@ -17,7 +19,8 @@ pipeline {
         stage("package jar") {
             steps {
                 script {
-                    grv.package_jar()
+                    //grv.package_jar()
+                    packageJar()
                 }
             }
         }
@@ -25,7 +28,8 @@ pipeline {
         stage("build image") {
             steps {
                 script {
-                    grv.build_image()
+                    //grv.build_image()
+                    buildImage()
                 }
             }
         }
