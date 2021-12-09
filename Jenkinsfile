@@ -29,7 +29,7 @@ pipeline {
             steps {
                 script {
                     //grv.build_image()
-                    buildImage utkal/demo-java-maven-app:java-app-3.0
+                    buildImage "utkal/demo-java-maven-app:java-app-3.0"
                 }
             }
         }
