@@ -1,5 +1,9 @@
 #!/usr/bin/env groovy
-@Library('shared-lib')_
+library identifier: 'jenkins-lib@main', retriever: modernSCM(
+    [$class: 'GitSCMSSource',
+        remote: 'https://github.com/utkaln/jenkins-lib.git'
+        credentialsId: 'github-credentials-utkaln' ]
+)
 def grv
 pipeline {
     agent any
@@ -10,7 +14,7 @@ pipeline {
         stage("init") {
             steps {
                 script {
-                    echo "Initialize groovy script ..."
+                    echo "Initialize groovy script from the project only shared lib ..."
                     grv = load "jenkins-script.groovy"
                 }
             }
