@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 library identifier: 'jenkins-lib@main', retriever: modernSCM(
     [$class: 'GitSCMSSource',
-        remote: 'https://github.com/utkaln/jenkins-lib.git'
+        remote: 'https://github.com/utkaln/jenkins-lib.git',
         credentialsId: 'github-credentials-utkaln' ]
 )
 def grv
