@@ -10,7 +10,7 @@ pipeline {
         stage("init") {
             steps {
                 script {
-                    echo "Initialize groovy script ..."
+                    echo "Initialize groovy script with webhook..."
                     grv = load "jenkins-script.groovy"
                 }
             }
