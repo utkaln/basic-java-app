@@ -14,7 +14,7 @@ pipeline {
         stage("init") {
             steps {
                 script {
-                    echo "Initialize groovy script from the project only shared lib ..."
+                    echo "Initializing Build Process from Github Webhook"
                     grv = load "jenkins-script.groovy"
                 }
             }
