@@ -11,7 +11,7 @@ pipeline {
         maven 'Maven'
     }
     stages {
-        stage("init") {
+        stage("Init") {
             steps {
                 script {
                     echo "Initializing Build Process from Github Webhook"
@@ -20,7 +20,7 @@ pipeline {
             }
         }
         
-        stage("update version") {
+        stage("Update Version") {
             steps {
                 script {
                     // updates version incrementally 0.0.X
@@ -29,7 +29,7 @@ pipeline {
             }
         }
 
-        stage("package jar") {
+        stage("Package Jar") {
             steps {
                 script {
                     //grv.package_jar()
@@ -38,7 +38,7 @@ pipeline {
             }
         }
 
-        stage("build image") {
+        stage("Build Image") {
             steps {
                 script {
                     //grv.build_image()
@@ -47,10 +47,18 @@ pipeline {
             }
         }
 
-        stage("deploy") {
+        stage("Deploy") {
             steps {
                 script {
                     grv.deploy()
+                }
+            }
+        }
+
+        stage("Commit Version Update to Git") {
+            steps {
+                script {
+                    commitVersion()
                 }
             }
         }
