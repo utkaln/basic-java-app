@@ -20,6 +20,15 @@ pipeline {
             }
         }
         
+        stage("update version") {
+            steps {
+                script {
+                    // updates version incrementally 0.0.X
+                    updateVersion()
+                }
+            }
+        }
+
         stage("package jar") {
             steps {
                 script {
@@ -33,7 +42,7 @@ pipeline {
             steps {
                 script {
                     //grv.build_image()
-                    buildImage "utkal/demo-java-maven-app:java-app-3.0"
+                    buildImage "utkal/demo-java-maven-app:"
                 }
             }
         }
