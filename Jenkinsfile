@@ -55,7 +55,7 @@ pipeline {
             }
         }
 
-        stage("Commit Version Update to Git") {
+        stage("Commit to Git") {
             steps {
                 script {
                     commitVersion()
