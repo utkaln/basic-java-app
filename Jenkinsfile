@@ -45,7 +45,7 @@ pipeline {
             steps {
                 script {
                     //grv.build_image()
-                    buildImage "utkal/demo-java-maven-app:basic-java-"
+                    //buildImage "utkal/demo-java-maven-app:basic-java-"
                 }
             }
         }
@@ -55,6 +55,7 @@ pipeline {
                 script {
                     //grv.deploy()
                     echo "EC2 IP is: ${params.EC2_IP}"
+                    deployToEC2()
                 }
             }
         }
@@ -62,7 +63,7 @@ pipeline {
         stage("Commit to Git") {
             steps {
                 script {
-                    commitVersion() 
+                    //commitVersion() 
                 }
             }
         }
