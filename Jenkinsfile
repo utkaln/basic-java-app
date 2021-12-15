@@ -46,7 +46,7 @@ pipeline {
                 script {
                     echo "Dummy Build image call"
                     //grv.build_image()
-                    //buildImage "utkal/demo-java-maven-app:basic-java-"
+                    buildImage "utkal/demo-java-maven-app:basic-java-"
                 }
             }
         }
@@ -55,7 +55,6 @@ pipeline {
             steps {
                 script {
                     //grv.deploy()
-                    echo "EC2 IP is: ${params.EC2_IP}"
                     deployToEC2 "${params.EC2_IP}"
                 }
             }
@@ -64,8 +63,7 @@ pipeline {
         stage("Commit to Git") {
             steps {
                 script {
-                    //commitVersion() 
-                    echo "Dummy Commit to Git Call"
+                    commitVersion() 
                 }
             }
         }
