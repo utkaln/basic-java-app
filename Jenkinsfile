@@ -44,6 +44,7 @@ pipeline {
         stage("Build Image") {
             steps {
                 script {
+                    echo "Dummy Build image call"
                     //grv.build_image()
                     //buildImage "utkal/demo-java-maven-app:basic-java-"
                 }
@@ -64,6 +65,7 @@ pipeline {
             steps {
                 script {
                     //commitVersion() 
+                    echo "Dummy Commit to Git Call"
                 }
             }
         }
