@@ -7,6 +7,9 @@ library identifier: 'jenkins-lib@main', retriever: modernSCM(
 def grv
 pipeline {
     agent any
+    prameters {
+        string(name: 'EC2_IP', defaultValue: '', description: 'IP of the EC2 instance') 
+    }
     tools {
         maven 'Maven'
     }
@@ -50,7 +53,8 @@ pipeline {
         stage("Deploy") {
             steps {
                 script {
-                    grv.deploy()
+                    //grv.deploy()
+                    echo "EC2 IP is: ${params.EC2_IP}"
                 }
             }
         }
