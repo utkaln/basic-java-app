@@ -56,7 +56,7 @@ pipeline {
                 script {
                     //grv.deploy()
                     echo "EC2 IP is: ${params.EC2_IP}"
-                    deployToEC2()
+                    deployToEC2 $params.EC2_IP
                 }
             }
         }
