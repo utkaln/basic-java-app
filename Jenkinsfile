@@ -8,7 +8,8 @@ def grv
 pipeline {
     agent any
     parameters {
-        string(name: 'EC2_IP', defaultValue: '', description: 'IP of the EC2 instance') 
+        string(name: 'EC2_IP', defaultValue: '', description: 'IP of the EC2 instance')
+        string(name: 'DOCKER_IMAGE_NAME', defaultValue: 'utkal/demo-java-maven-app:basic-java-', description" '') 
     }
     tools {
         maven 'Maven'
@@ -46,7 +47,7 @@ pipeline {
                 script {
                     echo "Dummy Build image call"
                     //grv.build_image()
-                    buildImage "utkal/demo-java-maven-app:basic-java-"
+                    buildImage "${params.DOCKER_IMAGE_NAME}"
                 }
             }
         }
