@@ -56,7 +56,7 @@ pipeline {
             steps {
                 script {
                     //grv.deploy()
-                    deployToEC2 "${params.EC2_IP}"
+                    deployToEC2("${params.EC2_IP}", "${params.DOCKER_IMAGE_NAME}")
                 }
             }
         }
