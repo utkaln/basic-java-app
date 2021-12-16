@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+      custom-basic-java-app:
+        image: utkal/demo-java-maven-app:basic-java-0.0.11-51
+        ports:
+          - 8081:8080
+      postgres:
+        image: postgres:lts
+        port:
+          - 5432:5432
+        environment:
+          - POSTGRES_PASSWORD:def_pwd
+
