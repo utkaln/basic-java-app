@@ -5,7 +5,7 @@ services:
         ports:
           - 8081:8080
       postgres:
-        image: postgres:lts
+        image: postgres
         ports:
           - 5432:5432
         environment:
