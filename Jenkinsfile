@@ -9,7 +9,7 @@ pipeline {
             steps {
                 script {
                     echo "Initialize groovy script ..."
-                    grv = load "jenkins-script.groovy"
+                    //grv = load "jenkins-script.groovy"
                 }
             }
         }
@@ -17,7 +17,8 @@ pipeline {
         stage("package jar") {
             steps {
                 script {
-                    grv.package_jar()
+                    echo "Pseudo packaged jar ..."
+                    //grv.package_jar()
                 }
             }
         }
@@ -25,7 +26,8 @@ pipeline {
         stage("build image") {
             steps {
                 script {
-                    grv.build_image()
+                    echo "Pseudo Built image ..."
+                    //grv.build_image()
                 }
             }
         }
@@ -33,7 +35,8 @@ pipeline {
         stage("deploy") {
             steps {
                 script {
-                    grv.deploy()
+                    //grv.deploy()
+                    sh 'kubectl create deployment nginx --image=nginx'
                 }
             }
         }
