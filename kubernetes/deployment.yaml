@@ -16,7 +16,7 @@ spec:
         app: $APP_NAME
     spec:
       imagePullSecrets:
-        - name: utkal-registry-key
+        - name: utkal-docker-reg
       containers:
         - name: $APP_NAME
           image: $IMAGE_NAME
