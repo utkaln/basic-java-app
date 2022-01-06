@@ -8,7 +8,6 @@ def grv
 pipeline {
     agent any
     parameters {
-        string(name: 'EC2_IP', defaultValue: '', description: 'IP of the EC2 instance')
         string(name: 'DOCKER_IMAGE_NAME', defaultValue: 'utkal/demo-java-maven-app:basic-java-', description: '') 
     }
     tools {
@@ -53,10 +52,18 @@ pipeline {
         }
 
         stage("Deploy") {
+            environment {
+                AWS_ACCESS_KEY_ID = credentials('jenkins-aws-access-key-id')
+                AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
+                APP_NAME = 'demo-java-maven-app'
+                IMAGE_NAME = "${params.DOCKER_IMAGE_NAME}:${env.IMAGE_TAG}"
+            }
             steps {
                 script {
                     //grv.deploy()
-                    deployToEC2("${params.EC2_IP}", "${params.DOCKER_IMAGE_NAME}")
+                    echo "The image to be deployed to EKS is : ${IMAGE_NAME}"
+                    sh 'envsubst < kubernetes/deployment.yaml | kubectl apply -f -'
+                    sh 'envsubst < kubernetes/service.yaml | kubectl apply -f -'
                 }
             }
         }
