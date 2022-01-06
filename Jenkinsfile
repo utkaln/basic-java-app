@@ -62,7 +62,6 @@ pipeline {
                 script {
                     //grv.deploy()
                     echo "The image to be deployed to EKS is : ${IMAGE_NAME}"
-                    sh 'kubectl create ns fargate'
                     sh 'envsubst < kubernetes/deployment.yaml | kubectl apply -f -'
                     sh 'envsubst < kubernetes/service.yaml | kubectl apply -f -'
                 }
