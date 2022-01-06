@@ -56,7 +56,7 @@ pipeline {
                 AWS_ACCESS_KEY_ID = credentials('jenkins-aws-access-key-id')
                 AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
                 APP_NAME = 'demo-java-maven-app'
-                IMAGE_NAME = "${params.DOCKER_IMAGE_NAME}:${env.IMAGE_TAG}"
+                IMAGE_NAME = "${params.DOCKER_IMAGE_NAME}${env.IMAGE_TAG}"
             }
             steps {
                 script {
