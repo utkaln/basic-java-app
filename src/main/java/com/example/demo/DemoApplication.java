@@ -25,7 +25,7 @@ public class DemoApplication {
 		return "OK";
 	}
 
-	// @makeIssue
+	// @todo
 	public String methodNeverInvoked() {
 		return null;
 	}
