@@ -27,7 +27,7 @@ jobs:
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
           image: utkal/demo-java-maven-app
-          tags: v1, latest
+          tags: gha-v2
           registry: docker.io
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
