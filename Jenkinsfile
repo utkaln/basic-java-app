@@ -8,7 +8,6 @@ def grv
 pipeline {
     agent any
     parameters {
-        string(name: 'EC2_IP', defaultValue: '', description: 'IP of the EC2 instance')
         string(name: 'DOCKER_IMAGE_NAME', defaultValue: 'utkal/demo-java-maven-app:basic-java-', description: '') 
     }
     tools {
@@ -52,11 +51,30 @@ pipeline {
             }
         }
 
-        stage("Deploy") {
+        stage("Provision EC2 Instance via Terraform") {
+            environment {
+                AWS_ACESS_KEY_ID = credentials("jenkins_aws_access_key_id")
+                AWS_SECRET_ACCESS_KEY = credentials("jenkins_aws_secret_access_key")
+                TF_VAR_env_prefix = "test"
+            }
             steps {
                 script {
+                    provisionEC2Terraform()
+                }
+            }
+        }
+        
+        stage("Deploy to EC2 via Terraform") {
+            steps {
+                // add delay to allow terraform to create ec2 instance and run bootstrap
+                echo "Waiting for EC2 instance to initialize in 90 seconds..."
+                sleep(90) {
+                    // on interrupt do
+                }
+                echo "Starting deployment step"
+                script {
                     //grv.deploy()
-                    deployToEC2("${params.EC2_IP}", "${params.DOCKER_IMAGE_NAME}")
+                    deployToEC2Terraform()
                 }
             }
         }
