@@ -55,11 +55,20 @@ pipeline {
             environment {
                 AWS_ACESS_KEY_ID = credentials("jenkins_aws_access_key_id")
                 AWS_SECRET_ACCESS_KEY = credentials("jenkins_aws_secret_access_key")
-                TF_VAR_env_prefix = "test"
             }
             steps {
                 script {
-                    provisionEC2Terraform()
+                    //provisionEC2Terraform()
+                    // @todo remove after debugging
+                    dir("terraform") {
+                        sh "terraform init"
+                        sh "terraform apply --auto-approve"
+                        // read ip address from terraform output and set to env var
+                        EC2_PUBLIC_IP = sh(
+                            script: "terraform output ec2_public_ip",
+                            returnStdout: true
+                        ).trim()
+                    }
                 }
             }
         }
@@ -74,7 +83,7 @@ pipeline {
                 echo "Starting deployment step"
                 script {
                     //grv.deploy()
-                    deployToEC2Terraform()
+                    //deployToEC2Terraform()
                 }
             }
         }
