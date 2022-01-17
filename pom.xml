@@ -9,11 +9,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>basic-java-app</artifactId>
-<<<<<<< HEAD
-	<version>0.0.14</version>
-=======
 	<version>0.0.15</version>
->>>>>>> docker_compose
 	<name>basic-java-app</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
