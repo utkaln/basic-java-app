@@ -58,11 +58,8 @@ pipeline {
             }
             steps {
                 script {
-                    sh "pwd"
-                    echo "${PATH}"
-                    sh "which terraform"
-                    sh "ls -lah /usr/local/bin/"
-                    sh "ls -lah /usr/bin | grep terraform"
+                    // look for terraform config within the terraform folder
+                    // following is a way to refer to shell scripts in the context of a directory
                     dir("terraform") {
                         sh "terraform init"
                         sh "terraform apply --auto-approve"
