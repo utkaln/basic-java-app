@@ -15,7 +15,7 @@ variable "env_prefix" {
 }
 
 variable "ssh_ip" {
-  default = ["151.196.124.95/32"]
+  default = ["0.0.0.0/0"]
 }
 
 variable "instance_type" {
