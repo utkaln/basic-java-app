@@ -77,8 +77,8 @@ pipeline {
             steps {
                 script {
                     // add delay to allow terraform to create ec2 instance and run bootstrap
-                    echo "Waiting for EC2 instance to initialize in 10 seconds..."
-                    sleep(10000) {
+                    echo "Waiting for EC2 instance to initialize in 15 seconds..."
+                    sleep(15000) {
                         // on interrupt do
                     }
                     echo "Starting deployment step"
