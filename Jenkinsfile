@@ -83,7 +83,7 @@ pipeline {
                     echo "Starting deployment step"
                 
                     //grv.deploy()
-                    deployToEC2Terraform()
+                    deployToEC2Terraform("${params.DOCKER_IMAGE_NAME}")
                 }
             }
         }
