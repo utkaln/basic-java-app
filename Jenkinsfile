@@ -59,6 +59,10 @@ pipeline {
             steps {
                 script {
                     sh "pwd"
+                    echo "${PATH}"
+                    sh "which terraform"
+                    sh "ls -lah /usr/local/bin/"
+                    sh "ls -lah /usr/bin | grep terraform"
                     dir("terraform") {
                         sh "terraform init"
                         sh "terraform apply --auto-approve"
