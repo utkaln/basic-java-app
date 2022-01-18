@@ -15,7 +15,7 @@ variable "env_prefix" {
 }
 
 variable "ssh_ip" {
-  default = "151.196.124.95/32"
+  default = ["151.196.124.95/32"]
 }
 
 variable "instance_type" {
@@ -23,7 +23,7 @@ variable "instance_type" {
 }
 
 variable "http_ip" {
-  default = "0.0.0.0/0"
+  default = ["0.0.0.0/0"]
 }
 
 variable "image_name" {

@@ -38,7 +38,7 @@ resource "aws_route_table" "utkal-rt" {
   route {
     // default for VPC is created implicitly
     // start with Internet Gateway
-    cidr_block = var.subnet_cidr_block
+    cidr_block = ["0.0.0.0/0"]
     gateway_id = aws_internet_gateway.utkal-igw.id
   }
   tags = {
@@ -85,7 +85,7 @@ resource "aws_security_group" "utkal_sg" {
     from_port   = 8080
     to_port     = 8080
     protocol    = "tcp"
-    cidr_blocks = var.http_ip
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   // Outbound rule to not limit any port or any protocol
