@@ -58,7 +58,16 @@ pipeline {
             }
             steps {
                 script {
-                    provisionEC2Terraform()
+                    sh "pwd"
+                    dir("terraform") {
+                        sh "terraform init"
+                        sh "terraform apply --auto-approve"
+                        // read ip address from terraform output and set to env var
+                        EC2_PUBLIC_IP = sh(
+                            script: "terraform output ec2_public_ip",
+                            returnStdout: true
+                        ).trim()
+                    }
                 }
             }
         }
