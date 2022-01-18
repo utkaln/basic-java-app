@@ -38,7 +38,7 @@ resource "aws_route_table" "utkal-rt" {
   route {
     // default for VPC is created implicitly
     // start with Internet Gateway
-    cidr_block = var.rt_outside
+    cidr_block = var.subnet_cidr_block
     gateway_id = aws_internet_gateway.utkal-igw.id
   }
   tags = {

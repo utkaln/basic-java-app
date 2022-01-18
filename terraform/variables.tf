@@ -13,7 +13,7 @@ variable "def_az" {
 variable "env_prefix" {
   default = "dev"
 }
-variable "rt_outside" {}
+
 variable "ssh_ip" {
   default = "151.196.124.95/32"
 }
@@ -22,8 +22,12 @@ variable "instance_type" {
   default = "t2.micro"
 }
 
-variable "http_ip" {}
+variable "http_ip" {
+  default = "0.0.0.0/0"
+}
 
-variable "image_name" {}
-variable "public_key_location" {}
-variable "entry_file" {}
+variable "image_name" {
+  default = ["amzn2-ami-hvm-*-x86_64-gp2"]
+}
+
+
