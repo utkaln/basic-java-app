@@ -62,15 +62,16 @@ pipeline {
         
         stage("Deploy to EC2 via Terraform") {
             steps {
-                // add delay to allow terraform to create ec2 instance and run bootstrap
-                echo "Waiting for EC2 instance to initialize in 90 seconds..."
-                sleep(90) {
-                    // on interrupt do
-                }
-                echo "Starting deployment step"
                 script {
+                    // add delay to allow terraform to create ec2 instance and run bootstrap
+                    echo "Waiting for EC2 instance to initialize in 90 seconds..."
+                    sleep(90) {
+                        // on interrupt do
+                    }
+                    echo "Starting deployment step"
+                
                     //grv.deploy()
-                    //deployToEC2Terraform()
+                    deployToEC2Terraform()
                 }
             }
         }
