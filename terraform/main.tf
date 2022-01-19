@@ -2,7 +2,7 @@ terraform {
   required_version = ">=0.12"
   backend "s3" {
     bucket = "basic-java-app-tf-state"
-    key    = "basic-java-app/state.tfstate"
+    key    = "basic-java-app.tfstate"
     region = "us-east-1"
   }
 }
