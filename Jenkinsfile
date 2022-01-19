@@ -74,6 +74,9 @@ pipeline {
         }
         
         stage("Deploy to EC2 via Terraform") {
+            environment{
+                DOCKER_CREDENNTIALS = credentials('docker-hub-utkal')
+            }
             steps {
                 script {
                     // add delay to allow terraform to create ec2 instance and run bootstrap
@@ -89,7 +92,7 @@ pipeline {
                     echo "IP addr of EC2 instance found as ${EC2_PUBLIC_IP}"
                     // define docker compose command in a shell script
                     def imageNameTag = params.DOCKER_IMAGE_NAME+env.IMAGE_TAG 
-                    def dockerComposeCmd = "bash ./docker-shell.sh ${imageNameTag}"
+                    def dockerComposeCmd = "bash ./docker-shell.sh ${imageNameTag} ${DOCKER_CREDENNTIALS_USR} ${DOCKER_CREDENNTIALS_PSW}"
                     
 
                     sshagent(['ec2-instance-ssh-key']) {
