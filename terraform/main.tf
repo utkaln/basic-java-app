@@ -1,8 +1,15 @@
-provider "aws" {
-
-  region = var.region
+terraform {
+  required_version = ">=0.12"
+  backend "s3" {
+    bucket = "basic-java-app-tf-state"
+    key    = "basic-java-app.tfstate"
+    region = "us-east-1"
+  }
 }
 
+provider "aws" {
+  region = var.region
+}
 
 // Create a custom VPC using credentials from aws cli configure
 // Credentials are locally available under ~/.aws/configure
